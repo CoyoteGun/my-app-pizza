@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
-import {addItem, CartItem, selectCartItemById} from "../../redux/slices/cartSlice";
+import {selectCartItemById} from "../../redux/cart/selectors";
+import {CartItem} from "../../redux/cart/types";
+import {addItem} from "../../redux/cart/slice";
 
 type PizzaBlockProps = {
     id: string;
@@ -39,12 +42,14 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUr
     return (
         <div className={'pizza-block-wrapper'}>
             <div className="pizza-block">
+                <Link key={id} to={`/pizza/${id}`}>
                 <img
                     className="pizza-block__image"
                     src={imageUrl}
                     alt="Pizza"
                 />
                 <h4 className="pizza-block__title">{title}</h4>
+                </Link>
                 <div className="pizza-block__selector">
                     <ul>
                         {types.map((type, typeId) => (
@@ -63,7 +68,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUr
                     </ul>
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">від {price} $</div>
+                    <div className="pizza-block__price">від {price} ₴</div>
                     <button onClick={onClickAdd} className="button button--outline button--add">
                         <svg
                             width="12"

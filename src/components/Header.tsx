@@ -1,15 +1,26 @@
-import logoSvg from '../assets/img/pizza-logo.svg';
 import {NavLink} from "react-router-dom";
-import {Search} from "./Search";
 import {useSelector} from "react-redux";
-import {selectCart} from "../redux/slices/cartSlice";
+import {useEffect, useRef} from "react";
+
+import {selectCart} from "../redux/cart/selectors";
+import {Search} from "./Search";
+import logoSvg from '../assets/img/pizza-logo.svg';
 
 
 export const Header = () => {
 
     const {items, totalPrice} = useSelector(selectCart);
+    const isMounted = useRef(false);
 
     const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(items);
+            localStorage.setItem('cart', json);
+        }
+        isMounted.current = true;
+    }, [items]);
 
     return (
         <div className="header">
@@ -26,7 +37,7 @@ export const Header = () => {
                 <Search />
                 <div className="header__cart">
                     <NavLink to="/cart" className="button button--cart">
-                        <span>{totalPrice} $</span>
+                        <span>{totalPrice} ₴</span>
                         <div className="button__delimiter"></div>
                         <svg
                             width="18"

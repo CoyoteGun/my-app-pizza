@@ -1,17 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {RootState} from "../store";
-
-type Sort = {
-    name: string;
-    sortProperty: 'rating' | 'title' | 'price' | '-rating' | '-title' | '-price';
-}
-
-interface FilterSliceState {
-    searchValue: string,
-    categoryId: number,
-    currentPage: number,
-    sort: Sort;
-}
+import {FilterSliceState, Sort, SortPropertyEnum} from "./types";
 
 const  initialState: FilterSliceState = {
     searchValue: '',
@@ -19,7 +7,7 @@ const  initialState: FilterSliceState = {
     currentPage: 1,
     sort: {
         name: "популярністю",
-        sortProperty: "rating",
+        sortProperty: SortPropertyEnum.RATING_DESC,
     },
 }
 
@@ -40,24 +28,21 @@ const filterSlice = createSlice({
             state.currentPage = action.payload;
         },
         setFilters(state, action: PayloadAction<FilterSliceState>) {
-          if (Object.keys(action.payload).length) {
-              state.currentPage = Number(action.payload.currentPage);
-              state.sort = action.payload.sort;
-              state.categoryId = Number(action.payload.categoryId);
-          } else {
-           state.currentPage = 1;
-           state.categoryId = 0;
-           state.sort = {
-               name: 'популярністю',
-               sortProperty: 'rating',
-           }
-          }
+            if (Object.keys(action.payload).length) {
+                state.currentPage = Number(action.payload.currentPage);
+                state.sort = action.payload.sort;
+                state.categoryId = Number(action.payload.categoryId);
+            } else {
+                state.currentPage = 1;
+                state.categoryId = 0;
+                state.sort = {
+                    name: 'популярністю',
+                    sortProperty: SortPropertyEnum.RATING_DESC,
+                }
+            }
         },
     }
 });
-
-export const selectSort = (state:RootState) => state.filter.sort;
-export const selectFilter = (state:RootState) => state.filter;
 
 export const {setCategoryId, setSort, setCurrentPage, setFilters, setSearchValue} = filterSlice.actions;
 
