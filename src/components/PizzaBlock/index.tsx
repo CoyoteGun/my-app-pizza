@@ -28,7 +28,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUr
 
     const onClickAdd = () => {
       const item: CartItem = {
-          id,
+          id: `${id}_${typeNames[activeType]}_${sizes[activeSize]}`,
           title,
           price,
           imageUrl,

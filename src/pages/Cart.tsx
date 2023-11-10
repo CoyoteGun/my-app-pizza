@@ -67,7 +67,7 @@ export const Cart: React.FC = () => {
                 <div className="cart__bottom">
                     <div className="cart__bottom-details">
                         <span> Всього піц: <b>{totalCount} шт.</b> </span>
-                        <span> Сума замовлення: <b>{totalPrice} $</b> </span>
+                        <span> Сума замовлення: <b>{totalPrice} ₴</b> </span>
                     </div>
                     <div className="cart__bottom-buttons">
                         <Link to={"/"} className="button button--outline button--add go-back-btn">

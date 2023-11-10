@@ -29,4 +29,10 @@
       }
     }
   }
+
+  @media (max-width: 376px) {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
 }

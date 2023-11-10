@@ -1,6 +1,5 @@
 @import './variables';
 @import './libs/normalize';
-
 @import './components/all';
 
 body {
@@ -384,6 +383,40 @@ body {
       margin: 0 auto;
       font-weight: 600;
       font-size: 18px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    width: 500px;
+  }
+
+
+  @media (max-width: 425px) {
+    width: 320px;
+
+    &__clear {
+      span {
+        font-size: 13px;
+      }
+    }
+
+    .pay-btn {
+      width: 130px;
+    }
+
+    .go-back-btn {
+      width: 130px;
+    }
+
+    &__item {
+      flex-wrap: wrap;
+      &-img {
+        width: 32%;
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
     }
   }
 }
