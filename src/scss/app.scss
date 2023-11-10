@@ -118,6 +118,7 @@ body {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+
       path {
         stroke: $black;
         stroke-width: 1.9;
@@ -150,6 +151,7 @@ body {
           stroke: darken($color: #b6b6b6, $amount: 50);
         }
       }
+
       span {
         color: darken($color: #b6b6b6, $amount: 50);
       }
@@ -275,6 +277,7 @@ body {
           height: 11.5px;
           position: relative;
         }
+
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
@@ -283,7 +286,6 @@ body {
       }
     }
   }
-
   &__bottom {
     margin: 50px 0;
 
@@ -332,6 +334,7 @@ body {
 
         svg {
           margin-right: 12px;
+
           path {
             fill: transparent;
             stroke-width: 2;
@@ -352,6 +355,10 @@ body {
     margin: 80px auto;
     width: 620px;
     text-align: center;
+
+    @media(max-width: 700px) {
+      width: 380px;
+    }
 
     h2 {
       font-size: 36px;
@@ -386,13 +393,36 @@ body {
     }
   }
 
-  @media (max-width: 760px) {
-    width: 500px;
+  @media (max-width: 800px) {
+    &__clear {
+      span {
+        font-size: 16px;
+      }
+    }
+
+    .pay-btn {
+      width: 230px;
+    }
+
+    .go-back-btn {
+      width: 230px;
+    }
+
+    &__item {
+      flex-wrap: wrap;
+
+      &-img {
+        width: 32%;
+
+        img {
+          width: 140px;
+          height: 140px;
+        }
+      }
+    }
   }
 
-
   @media (max-width: 425px) {
-    width: 320px;
 
     &__clear {
       span {
@@ -410,8 +440,10 @@ body {
 
     &__item {
       flex-wrap: wrap;
+
       &-img {
         width: 32%;
+
         img {
           width: 100px;
           height: 100px;
