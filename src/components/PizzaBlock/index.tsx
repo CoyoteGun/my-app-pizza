@@ -25,10 +25,11 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUr
     const [activeSize, setActiveSize] = useState(0);
 
     const addedCount = cartItem ? cartItem.count : 0;
+    console.log('addedCount:', addedCount);
 
     const onClickAdd = () => {
       const item: CartItem = {
-          id: `${id}_${typeNames[activeType]}_${sizes[activeSize]}`,
+          id: `_${id}_${typeNames[activeType]}_${sizes[activeSize]}`,
           title,
           price,
           imageUrl,
